@@ -48,26 +48,26 @@ KERNEL_DIR="$(pwd)"
 BASEDIR="$(basename "$KERNEL_DIR")"
 
 # The name of the Kernel, to name the ZIP
-ZIPNAME="Lockdown-EAS-LTO"
+ZIPNAME="[v3.0]-Nebula_v0.0.2"
 
 # Build Author
 # Take care, it should be a universal and most probably, case-sensitive
-AUTHOR="vijaymalav564"
+AUTHOR="KazuDante"
 
 # Architecture
 ARCH=arm64
 
 # The name of the device for which the kernel is built
-MODEL="Realme 2 Pro"
+MODEL="Redmi Note 7"
 
 # The codename of the device
-DEVICE="RMX1801"
+DEVICE="lavender"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=RMX1801_defconfig
+DEFCONFIG=lavender_defconfig
 
-# Specify compiler. 
+# Specify compiler.
 # 'clang' or 'gcc'
 COMPILER=clang
 
@@ -83,7 +83,7 @@ PTTG=1
 	if [ $PTTG = 1 ]
 	then
 		# Set Telegram Chat ID
-		CHATID="-1001423975604"
+		CHATID="-1001293242785"
 	fi
 
 # Generate a full DEFCONFIG prior building. 1 is YES | 0 is NO(default)
@@ -96,8 +96,8 @@ FILES=Image.gz-dtb
 # 1 is YES | 0 is NO(default)
 BUILD_DTBO=0
 	if [ $BUILD_DTBO = 1 ]
-	then 
-		# Set this to your dtbo path. 
+	then
+		# Set this to your dtbo path.
 		# Defaults in folder out/arch/arm64/boot/dts
 		DTBO_PATH="xiaomi/violet-sm6150-overlay.dtbo"
 	fi
@@ -170,7 +170,7 @@ KERVER=$(make kernelversion)
 # Set a commit head
 COMMIT_HEAD=$(git log --oneline -1)
 
-# Set Date 
+# Set Date
 DATE=$(TZ=Asia/Jakarta date +"%Y%m%d-%T")
 
 #Now Its time for other stuffs like cloning, exporting, etc
@@ -185,7 +185,7 @@ DATE=$(TZ=Asia/Jakarta date +"%Y%m%d-%T")
 		GCC64_DIR=$KERNEL_DIR/gcc64
 		GCC32_DIR=$KERNEL_DIR/gcc32
 	fi
-	
+
 	if [ $COMPILER = "clang" ]
 	then
 		msg "|| Cloning Clang-14 ||"
@@ -274,7 +274,7 @@ build_kernel() {
 	fi
 
 	BUILD_START=$(date +"%s")
-	
+
 	if [ $COMPILER = "clang" ]
 	then
 		MAKE+=(
@@ -297,7 +297,7 @@ build_kernel() {
 			LD="$CROSS_COMPILE$LINKER"
 		)
 	fi
-	
+
 	if [ $SILENCE = "1" ]
 	then
 		MAKE+=( -s )
@@ -330,7 +330,7 @@ build_kernel() {
 				tg_post_build "error.log" "*Build failed to compile after $((DIFF / 60)) minute(s) and $((DIFF % 60)) seconds*"
 			fi
 		fi
-	
+
 }
 
 ##--------------------------------------------------------------##
