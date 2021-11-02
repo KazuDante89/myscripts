@@ -48,7 +48,7 @@ KERNEL_DIR="$(pwd)"
 BASEDIR="$(basename "$KERNEL_DIR")"
 
 # The name of the Kernel, to name the ZIP
-ZIPNAME="[v3.0]-Nebula_v0.0.2"
+ZIPNAME="[v0.2]-Nebula_v0.0.2"
 
 # Build Author
 # Take care, it should be a universal and most probably, case-sensitive
@@ -65,7 +65,7 @@ DEVICE="lavender"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender_defconfig
+DEFCONFIG=lavender-perf_defconfig
 
 # Specify compiler.
 # 'clang' or 'gcc'
